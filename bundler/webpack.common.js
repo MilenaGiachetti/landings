@@ -9,7 +9,7 @@ const generateHtmlPlugin = (title) => {
         title,
         filename: `pages/${title.toLowerCase()}/index.html`,
         template: `./src/pages/${title.toLowerCase()}/index.html`,
-        // base: isProduction ? '/landing_collection/' : '/',
+        // base: isProduction ? '/landings/' : '/',
         inject: true,
         chunks: [title]
     });
@@ -31,7 +31,7 @@ module.exports = {
         test: path.resolve(__dirname, '../src/pages/test/script.js')
     },
     output: {
-        publicPath: isProduction ? '/landing_collection/' : '/',
+        publicPath: isProduction ? '/landings/' : '/',
         filename: '[name].bundle.[contenthash].js',
         path: path.resolve(__dirname, '../dist')
     },
@@ -47,7 +47,7 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true,
-            // base: isProduction ? '/landing_collection/' : '/',
+            // base: isProduction ? '/landings/' : '/',
             inject: true,
             chunks: ['index']
         }),
