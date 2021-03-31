@@ -47,6 +47,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     font-family: $primary-font;
+    background-color: #CBE9EE;
 }
 
 .hidden {
@@ -86,37 +87,41 @@ body {
 }
 
 // Main
-.slider {
-
-    .slide {
-        display: flex;
-        .img_ctn {
-            width: 60%;
-            .img {
-                width: 100%;
-            }
-        }   
-        .txt_ctn {
-            width: 40%;
-        } 
+.hero_image {
+    display: flex;
+    flex-direction: column;
+    svg {
+        width: 100%;
+        margin: 0 auto;
     }
-    .slider_controls {
-        .slider_btn {
-            background-color: #000;
-            border: unset;
+    .attribution {
+        text-align: right;
+        a {
+            color: #fff;
         }
     }
 }
 
-.about {
-    display: flex;
-    .dark_img_ctn, .light_img_ctn {
-        width: 30%;
-        .img {
-            width: 100%;
-        }
+.content {
+    max-width: 1200px;
+    background-color: #F8FBFC;
+    border-radius: 20px 20px 0 0;
+    margin: 60px auto 0 auto;
+    padding: 40px;
+}
+
+.cloud {
+    animation: move 5s infinite alternate;
+}
+.cloud.middle {
+    animation: move 3s infinite alternate;
+}
+
+@keyframes move {
+    0% {
+      transform: translateX(0);
     }
-    .txt_ctn {
-        width: 40%;
+    100% {
+        transform: translateX(20px);
     }
 }

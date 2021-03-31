@@ -23,12 +23,13 @@ const populateHtmlPlugins = (pagesArray) => {
     return res;
 }
 
-const pages = populateHtmlPlugins(["test"]);
+const pages = populateHtmlPlugins(["test", "svg_animation"]);
 
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/script.js'),
-        test: path.resolve(__dirname, '../src/pages/test/script.js')
+        test: path.resolve(__dirname, '../src/pages/test/script.js'),
+        svg_animation: path.resolve(__dirname, '../src/pages/svg_animation/script.js')
     },
     output: {
         publicPath: isProduction ? '/landings/' : '/',
