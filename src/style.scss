@@ -187,15 +187,17 @@ main {
                     }
                 }
                 .card-content { 
-                    .small-tags {
-                        display: block;
-                        position: relative;
-                        right: unset;
-                        top: unset;
-                        .tag {
-                            margin: 0 0.5rem 0.5rem 0;
-                        }
-                    } 
+                    .card-body {
+                        .small-tags {
+                            display: block;
+                            position: relative;
+                            right: unset;
+                            top: unset;
+                            .tag {
+                                margin: 0 0.5rem 0.5rem 0;
+                            }
+                        } 
+                    }
                     .card-footer {
                         display: flex;
                         flex-flow: column;
