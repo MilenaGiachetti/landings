@@ -2,15 +2,15 @@ import "./style.scss";
 
 window.onload = function() {
     function resizeGridItems() {
-        document.querySelectorAll(".card").forEach(card => {
-            let height = card.querySelector(".card-body").getBoundingClientRect().height;
+        document.querySelectorAll(".card-container").forEach(card => {
+            let height = card.querySelector(".card").getBoundingClientRect().height;
             let rows = Math.ceil(height / 5);
             card.style.gridRowEnd = 'span ' + rows;
         });
     }
 
     let fadeIns = [];
-    document.querySelectorAll(".card").forEach(card => {
+    document.querySelectorAll(".card-container").forEach(card => {
         card.addEventListener('click', () => {            
             fadeIns.forEach(element => element.classList.remove("fadeIn"));
             card.querySelector(".card-content").classList.add("fadeIn");
@@ -24,7 +24,7 @@ window.onload = function() {
 
     document.querySelectorAll(".close").forEach(btn => {
         btn.addEventListener('click', (e) => {
-            btn.parentElement.querySelector(".card-content").classList.remove("fadeIn");
+            btn.parentElement.parentElement.querySelector(".card-content").classList.remove("fadeIn");
             btn.classList.remove("fadeIn");
             resizeGridItems();
             e.stopPropagation();
