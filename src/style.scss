@@ -9,6 +9,7 @@ html {
 }
 
 body {
+    background-color: #E2F3F3;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
     min-height: 100vh;
@@ -32,30 +33,34 @@ main {
     grid-auto-rows: 5px;
     grid-column-gap: 2px;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 4rem;
     .card {
         grid-column-end: span 1;
         grid-row-end: span 50;
         margin-bottom: 2rem;
         .card-body {
-            border: 4px solid #fff;
+            border: 4px solid #E2F3F3;
             border-radius: 1.5rem;
             overflow: hidden;
             position: relative;
             img {
                 display: block;
+                position: relative;
                 width: 100%;
+                z-index: 2;
             }
             .close {
+                background-color: unset;
                 border: none;
-                border-radius: 50%;
                 cursor: auto;
-                height: 2rem;
-                line-height: 2rem;
-                left: 2rem;
+                font-size: 1.2rem;
+                height: 2.5rem;
+                left: 2.5rem;
                 opacity: 0;
                 outline: none;
                 position: absolute;
                 top: 2rem;
+                transition: opacity 0.3s;
                 width: 2rem;
                 z-index: 3;
             }
@@ -66,54 +71,68 @@ main {
                 position: absolute;
                 top: 2rem;
             }
-            .tags {
-                position: absolute;
-                right: 2rem;
-                top: 2rem;
-                .tag {
-                    background-color: rgb(168, 185, 255);
-                    border-radius: 1.5rem;
-                    display: inline-block;
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                    text-align: center;
-                    margin-right: 1rem;
-                    min-width: 5rem;
-                    padding: 0.3rem 0.8rem;
-                }
-            }
             .card-content {
+                background-color: #F1F9F9;
                 height: 0;
+                transform: translateY(-100%);
+                transition: transform 1s, opacity 0.9s;
                 opacity: 0;
                 h2 {
-                    padding-bottom: 2rem;
+                    font-size: 2.2rem;
+                    padding: 1rem 0 2rem 0
                 }         
+                .small-tags {
+                    display: none;
+                }
                 .footer {
                     display: flex;
                     justify-content: space-between;
                     padding-top: 2rem;
                     a {
-                        background-color: rgb(6, 7, 56);
+                        background-color: #1d3557;
                         border-radius: 0.5rem;
-                        color: #fff;
+                        color: #F1F9F9;
                         display: inline-block;
                         margin: 1rem 0;
                         min-width: 12rem;
                         padding: 1rem;
                         text-align: center;
                         text-decoration: none;
+                        i {
+                            margin-right: 3px;
+                        }
                     }
                 }
             }
             .card-content.fadeIn {
-                border: 1px solid #f2f2f2;
+                border: 1px solid #F1F9F9;
                 border-radius: 0 0 1.5rem 1.5rem ;
                 border-top:  none;
-                opacity: 1;
                 height: 100%;
-                padding: 2rem 4rem;
+                opacity: 1;
+                padding: 2rem 3rem;
+                transform: translateY(0);
+                transform-origin: top;
             }
         }
+    }
+}
+
+.tags {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    .tag {
+        background-color: #457B9D;
+        border-radius: 1.5rem;
+        color: #F1F9F9;
+        display: inline-block;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-align: center;
+        margin-right: 1rem;
+        min-width: 5rem;
+        padding: 0.3rem 0.8rem;
     }
 }
 
@@ -128,5 +147,38 @@ main {
     .card-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .card-container {
+        .card {
+            .card-body {
+                .tags {
+                    display: none;
+                }
+                .card-content { 
+                    .small-tags {
+                        display: block;
+                        position: relative;
+                        right: unset;
+                        top: unset;
+                        .tag {
+                            margin: 0 0.5rem 0.5rem 0;
+                        }
+                    } 
+                    .footer {
+                        display: flex;
+                        flex-flow: column;
+                        a {
+                            margin: 0.5rem 0;
+                        }
+                    }
+                }
+                .card-content.fadeIn {
+                    padding: 2rem 2rem;
+                }
+            }
+        }
     }
 }
