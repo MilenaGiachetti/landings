@@ -23,12 +23,12 @@ const populateHtmlPlugins = (pagesArray) => {
     return res;
 }
 
-const pages = populateHtmlPlugins(["test", "svg_animation"]);
+const pages = populateHtmlPlugins(["room_homepage", "svg_animation"]);
 
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/script.js'),
-        test: path.resolve(__dirname, '../src/pages/test/script.js'),
+        room_homepage: path.resolve(__dirname, '../src/pages/room_homepage/script.js'),
         svg_animation: path.resolve(__dirname, '../src/pages/svg_animation/script.js')
     },
     output: {
