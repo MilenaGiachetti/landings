@@ -158,12 +158,13 @@ main {
                 z-index: 4;
                 i {
                     color: #F6F6F6;
-                    font-size: 4rem;
+                    font-size: 3rem;
+                    padding-bottom: 0.5rem;
                 }
                 p {
                     color: #F6F6F6;
-                    font-size: 2rem;
-                    padding-bottom: 2rem;
+                    font-size: 1.8rem;
+                    padding-bottom: 3rem;
                 }
             }
             &:hover .card-content.fadeIn + .card-overlay {
