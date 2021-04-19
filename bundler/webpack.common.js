@@ -68,10 +68,25 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use:
-                [
-                    'babel-loader'
-                ]
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    useBuiltIns: 'usage',
+                                    corejs: 3,
+                                }
+                            ]
+                        ],
+                        plugins: [
+                            require("@babel/plugin-transform-async-to-generator"),
+                            require("@babel/plugin-transform-arrow-functions"),
+                            require("@babel/plugin-transform-modules-commonjs")
+                        ]
+                    }
+                }
             },
 
             // CSS
@@ -79,9 +94,27 @@ module.exports = {
                 test: /\.s[ac]ss$/i,
                 use:
                 [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader",
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    require('postcss-preset-env')({
+                                        browsers: 'last 2 versions',
+                                        autoprefixer: { grid: 'autoplace' }
+                                    }),
+                                ],
+                            },
+                        }
+                    },
+                    {
+                        loader: 'sass-loader', 
+                        options: { 
+                            sourceMap: true 
+                        }
+                    }
                 ]
             },
 
