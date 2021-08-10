@@ -50,6 +50,11 @@ body {
     font-family: $primary-font;
 }
 
+button {
+    border: none;
+    outline: none;
+}
+
 .hidden {
     display: none!important;    
 }
@@ -93,25 +98,30 @@ main, header {
 }
 
 .slider {
-    height: 66vh;
+    height: 66.2vh;
     display: grid;
-    grid-template-columns: repeat(7, 1fr) 200px repeat(4, 1fr);
+    grid-template-columns: 7fr 200px repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    overflow: hidden;
     .img_ctn {
-        grid-column: 1/8;
+        grid-column: 1/2;
         grid-row: 1/7;
+        overflow: hidden;
         .img {
-            width: 100%;
+            object-fit: cover;
             height: 100%;
+            width: auto;
         }
     }   
     .txt_ctn {
-        grid-column: 8/13;
+        display: flex;
+        flex-flow: column wrap;
+        grid-column: 2/7;
         grid-row: 1/6;
-        margin: auto 0;
+        justify-content: center;
     } 
     .slider_controls {
-        grid-column: 8/9;
+        grid-column: 2/3;
         grid-row: 6/7;
         display: flex;
         .slider_btn {
@@ -129,25 +139,33 @@ main, header {
     display: grid;
     grid-template-columns: repeat(7, 1fr) 200px repeat(4, 1fr);
     grid-template-rows: repeat(1, 1fr);
+    overflow: hidden;
     .dark_img_ctn, .light_img_ctn {
         grid-column: 1/5;
         grid-row: 1/2;
+        overflow: hidden;
         .img {
+            object-fit: cover;
             height: 100%;
-            width: 100%;
+            width: auto;
         }
     }
     .light_img_ctn { 
         grid-column: 9/13;
         grid-row: 1/2;
+        overflow: hidden;
         .img {
+            object-fit: cover;
             height: 100%;
-            width: 100%;
+            width: auto;
         }
     }
     .txt_ctn {
+        display: flex;
+        flex-flow: column wrap;
         grid-column: 5/10;
         grid-row: 1/2;
+        justify-content: center;
         margin: auto 0;
     }
 }
