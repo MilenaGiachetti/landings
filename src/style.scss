@@ -41,10 +41,14 @@ main {
     display: grid;
     grid-auto-rows: 5px;
     grid-column-gap: 2px;
+    -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     margin-top: 4rem;
     .card-container {
         grid-column-end: span 1;
+        -ms-grid-row-span: 1;
         grid-row-end: span 50;
         height: 100%;
         &:hover .card .card-front .card-overlay {

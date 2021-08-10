@@ -23,13 +23,15 @@ const populateHtmlPlugins = (pagesArray) => {
     return res;
 }
 
-const pages = populateHtmlPlugins(["room_homepage", "svg_animation"]);
+const pages = populateHtmlPlugins(["room_homepage", "svg_animation", "text", "add_model"]);
 
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/script.js'),
         room_homepage: path.resolve(__dirname, '../src/pages/room_homepage/script.js'),
-        svg_animation: path.resolve(__dirname, '../src/pages/svg_animation/script.js')
+        svg_animation: path.resolve(__dirname, '../src/pages/svg_animation/script.js'),
+        add_model: path.resolve(__dirname, '../src/pages/add_model/script.js'),
+        text: path.resolve(__dirname, '../src/pages/text/script.js')
     },
     output: {
         publicPath: isProduction ? '/landings/' : '/',
@@ -44,11 +46,16 @@ module.exports = {
         //         { from: path.resolve(__dirname, '../static') }
         //     ]
         // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, '../static') }
+            ]
+        }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true,
-            // base: isProduction ? '/landings/' : '/',
+            base: isProduction ? '/landings/' : '/',
             inject: true,
             chunks: ['index']
         }),
