@@ -13,20 +13,18 @@ window.onload = function() {
     document.querySelectorAll(".card-container").forEach(card => {
         card.addEventListener('click', () => {            
             fadeIns.forEach(element => element.classList.remove("fadeIn"));
-            card.querySelector(".card-content").classList.add("fadeIn");
+            card.querySelector(".card").classList.add("fadeIn");
             card.querySelector(".close").classList.add("fadeIn");
             fadeIns.length = 0;
-            fadeIns.push(card.querySelector(".card-content"));
+            fadeIns.push(card.querySelector(".card"));
             fadeIns.push(card.querySelector(".close"));
-            resizeGridItems();
         });
     });
 
     document.querySelectorAll(".close").forEach(btn => {
         btn.addEventListener('click', (e) => {
-            btn.parentElement.parentElement.querySelector(".card-content").classList.remove("fadeIn");
+            btn.closest(".card").classList.remove("fadeIn");
             btn.classList.remove("fadeIn");
-            resizeGridItems();
             e.stopPropagation();
         });
     });

@@ -46,19 +46,71 @@ main {
     .card-container {
         grid-column-end: span 1;
         grid-row-end: span 50;
-        margin-bottom: 2rem;
+        height: 100%;
+        &:hover .card .card-front .card-overlay {
+            opacity: 1;
+        }
         .card {
             border: 4px solid #F6F6F6;
-            border-radius: 0.5rem;
-            overflow: hidden;
+            border-radius: 5rem;
             position: relative;
-            .card-header {
-                img {
-                    display: block;
-                    position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            &.fadeIn {
+                transform: rotateY(180deg);
+            }
+            .card-front, .card-back {
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+            .card-front {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 1rem;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 1;
+                .card-overlay {
+                    align-items: center;
+                    background: rgba(0, 0, 0, 0.35);
+                    background: linear-gradient(0deg, rgba(0,0,0,0.35) 0%, rgba(0,255,111,0) 60%);
+                    border-radius: 10px;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    height: 100%;
+                    justify-content: flex-end;
+                    left: 0;
+                    opacity: 0;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    transition: all .3s;
                     width: 100%;
-                    z-index: 2;
+                    z-index: 4;
+                    i {
+                        color: #F6F6F6;
+                        font-size: 3rem;
+                        padding-bottom: 0.5rem;
+                    }
+                    p {
+                        color: #F6F6F6;
+                        font-size: 1.8rem;
+                        padding-bottom: 3rem;
+                    }
                 }
+            }
+            .card-back {
+                background-color: #FFFFFE;
+                border-radius: 1rem;
+                box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+                padding: 5rem 2rem 3rem 2rem;
+                position: relative;
+                transform: rotateY(180deg);
+                z-index: 0;
                 .close {
                     background-color: unset;
                     border: none;
@@ -80,14 +132,6 @@ main {
                     position: absolute;
                     z-index: 4;
                 }
-            }
-            .card-content {
-                box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
-                background-color: #FFFFFE;
-                height: 0;
-                transform: translateY(-100%);
-                transition: transform 1s, opacity 0.9s;
-                opacity: 0;
                 .card-body {
                     h2 {
                         font-size: 2.2rem;
@@ -130,48 +174,6 @@ main {
                         }
                     }
                 }
-            }
-            .card-content.fadeIn {
-                border: 1px solid #FFFFFE;
-                border-top:  none;
-                height: 100%;
-                opacity: 1;
-                padding: 2rem 3rem;
-                transform: translateY(0);
-                transform-origin: top;
-            }
-            .card-overlay {
-                align-items: center;
-                background: rgba(0, 0, 0, 0.35);
-                background: linear-gradient(0deg, rgba(29,53,87,1) 0%, rgba(0,255,111,0) 100%);
-                display: flex;
-                flex-flow: column nowrap;
-                height: 100%;
-                justify-content: flex-end;
-                left: 0;
-                opacity: 0;
-                pointer-events: none;
-                position: absolute;
-                top: 0;
-                transition: all .3s;
-                width: 100%;
-                z-index: 4;
-                i {
-                    color: #F6F6F6;
-                    font-size: 3rem;
-                    padding-bottom: 0.5rem;
-                }
-                p {
-                    color: #F6F6F6;
-                    font-size: 1.8rem;
-                    padding-bottom: 3rem;
-                }
-            }
-            &:hover .card-content.fadeIn + .card-overlay {
-                opacity: 0;
-            }
-            &:hover .card-content + .card-overlay {
-                opacity: 1;
             }
         }
     }
@@ -219,15 +221,24 @@ main {
                         display: none;
                     }
                 }
-                .card-content { 
+                .card-back { 
                     .card-body {
                         .small-tags {
                             display: block;
+                            margin-bottom: 1.5rem;
                             position: relative;
                             right: unset;
                             top: unset;
                             .tag {
-                                margin: 0 0.5rem 0.5rem 0;
+                                display: inline-block;
+                                font-size: 1.4rem;
+                                &:after {
+                                    content: "|";
+                                    padding: 0.5rem;
+                                }
+                                &:last-child:after {
+                                    content: "";
+                                }
                             }
                         } 
                     }
@@ -239,7 +250,7 @@ main {
                         }
                     }
                 }
-                .card-content.fadeIn {
+                .card-back.fadeIn {
                     padding: 2rem 2rem;
                 }
             }
